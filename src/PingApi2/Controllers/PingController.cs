@@ -11,7 +11,7 @@ public class PingController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        var infoFromContext = Baggage.Current.GetBaggage("ExampleItem");
+        var infoFromContext = Baggage.GetBaggage("ExampleItem");
 
         using var source = new ActivitySource("ExampleTracer");
 

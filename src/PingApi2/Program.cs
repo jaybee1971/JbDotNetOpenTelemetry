@@ -13,7 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOpenTelemetryTracing(b => {
     b.SetResourceBuilder(
         ResourceBuilder.CreateDefault().AddService(builder.Environment.ApplicationName))
+     .AddSource("ExampleTracer")
      .AddAspNetCoreInstrumentation()
+     .AddConsoleExporter()
      .AddOtlpExporter(opts => { opts.Endpoint = new Uri("http://localhost:4317"); });
 });
 
