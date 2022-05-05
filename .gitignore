@@ -364,4 +364,4 @@ MigrationBackup/
 *.vsix
 
 # MacOs
-.DS_Store
+**/.DS_Store
