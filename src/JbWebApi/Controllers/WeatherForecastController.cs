@@ -19,7 +19,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public async Task<IEnumerable<WeatherForecast>> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
@@ -28,5 +28,9 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+
+        // 'Ping' API 1
+        using var client = new HttpClient();
+        _ = await client.GetAsync("http://localhost:5014/ping");
     }
 }

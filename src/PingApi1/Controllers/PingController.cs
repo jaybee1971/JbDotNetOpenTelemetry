@@ -11,10 +11,11 @@ public class PingController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        using var source = new ActivitySource("ExampleTracer");
+        using var activitySource = new ActivitySource("Ping.API.1");
 
         // A span
-        using var activity = source.StartActivity("Call to Ping API 2");
+        using var Api1Activity = activitySource.StartActivity("Call to Ping API 2");
+        Api1Activity?.SetTag("api.Info", "some info here about the API call");
 
         Baggage.SetBaggage("ExampleItem", "Baggage information to pass through span");
 
@@ -23,7 +24,7 @@ public class PingController : ControllerBase
         _ = await client.GetAsync("http://localhost:5192/ping");
 
         // Another span
-        using var activityTwo = source.StartActivity("Arbitrary 10ms delay");
+        using var activityTwo = activitySource.StartActivity("Arbitrary 10ms delay");
         await Task.Delay(10);
 
         return Ok();

@@ -1,5 +1,10 @@
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using System.Diagnostics;
+
+var serviceName = "Ping.API.2";
+var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,13 +15,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Add OpenTelemetry
-builder.Services.AddOpenTelemetryTracing(b => {
-    b.SetResourceBuilder(
-        ResourceBuilder.CreateDefault().AddService(builder.Environment.ApplicationName))
-     .AddSource("ExampleTracer")
-     .AddAspNetCoreInstrumentation()
-     .AddConsoleExporter()
-     .AddOtlpExporter(opts => { opts.Endpoint = new Uri("http://localhost:4317"); });
+builder.Services.AddOpenTelemetryTracing(b => 
+{
+    b
+    .AddConsoleExporter()
+    .AddSource(serviceName)
+    .SetResourceBuilder(
+        ResourceBuilder.CreateDefault()
+            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .AddAspNetCoreInstrumentation()
+    .AddOtlpExporter(opts => 
+    { 
+        opts.Endpoint = new Uri("http://localhost:4317");
+    });
 });
 
 var app = builder.Build();
