@@ -21,6 +21,10 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public async Task<IEnumerable<WeatherForecast>> Get()
     {
+        // 'Ping' API 1
+        using var client = new HttpClient();
+        _ = await client.GetAsync("http://localhost:5014/ping");
+        
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
@@ -28,9 +32,5 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
-
-        // 'Ping' API 1
-        using var client = new HttpClient();
-        _ = await client.GetAsync("http://localhost:5014/ping");
     }
 }
