@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CDF5E3ED-FF85-4B82-A5D5-CC4E76E861C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JbWebApi", "src\JbWebApi\JbWebApi.csproj", "{5E6137CE-8E62-4161-8563-25C7D226BDA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JbWebApp", "src\JbWebApp\JbWebApp.csproj", "{83A887C2-76FD-4465-8423-D6F8EE4F429D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingApi1", "src\PingApi1\PingApi1.csproj", "{FD89DA07-67DC-4986-B514-117E16A241C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingApi2", "src\PingApi2\PingApi2.csproj", "{7C26C3DD-F4F2-4756-A3B4-1029F42ED9FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E6137CE-8E62-4161-8563-25C7D226BDA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E6137CE-8E62-4161-8563-25C7D226BDA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E6137CE-8E62-4161-8563-25C7D226BDA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E6137CE-8E62-4161-8563-25C7D226BDA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83A887C2-76FD-4465-8423-D6F8EE4F429D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A887C2-76FD-4465-8423-D6F8EE4F429D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A887C2-76FD-4465-8423-D6F8EE4F429D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A887C2-76FD-4465-8423-D6F8EE4F429D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD89DA07-67DC-4986-B514-117E16A241C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD89DA07-67DC-4986-B514-117E16A241C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD89DA07-67DC-4986-B514-117E16A241C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD89DA07-67DC-4986-B514-117E16A241C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C26C3DD-F4F2-4756-A3B4-1029F42ED9FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C26C3DD-F4F2-4756-A3B4-1029F42ED9FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C26C3DD-F4F2-4756-A3B4-1029F42ED9FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C26C3DD-F4F2-4756-A3B4-1029F42ED9FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5E6137CE-8E62-4161-8563-25C7D226BDA6} = {CDF5E3ED-FF85-4B82-A5D5-CC4E76E861C5}
+		{83A887C2-76FD-4465-8423-D6F8EE4F429D} = {CDF5E3ED-FF85-4B82-A5D5-CC4E76E861C5}
+		{FD89DA07-67DC-4986-B514-117E16A241C5} = {CDF5E3ED-FF85-4B82-A5D5-CC4E76E861C5}
+		{7C26C3DD-F4F2-4756-A3B4-1029F42ED9FB} = {CDF5E3ED-FF85-4B82-A5D5-CC4E76E861C5}
+	EndGlobalSection
+EndGlobal
