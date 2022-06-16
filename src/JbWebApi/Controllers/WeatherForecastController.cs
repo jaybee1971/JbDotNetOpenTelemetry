@@ -24,7 +24,6 @@ public class WeatherForecastController : ControllerBase
     {
         // 'Ping' API 1
         using var client = new HttpClient();
-        // _ = await client.GetAsync("http://localhost:5014/ping");
         _ = await client.GetAsync("http://ping-api-1:8001/ping");
         
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast

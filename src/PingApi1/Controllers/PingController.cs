@@ -21,7 +21,6 @@ public class PingController : ControllerBase
 
         // 'Ping' API 2
         using var client = new HttpClient();
-        // _ = await client.GetAsync("http://localhost:5192/ping");
         _ = await client.GetAsync("http://ping-api-2:7001/ping");
 
         // Another span
