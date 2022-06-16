@@ -1,7 +1,7 @@
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-var serviceName = "Jb Web API";
+var serviceName = "Weather.Api";
 var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,9 +22,11 @@ builder.Services.AddOpenTelemetryTracing(b =>
         ResourceBuilder.CreateDefault()
             .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
     .AddAspNetCoreInstrumentation()
+    .AddHttpClientInstrumentation()
     .AddOtlpExporter(opts => 
     { 
-        opts.Endpoint = new Uri("http://localhost:4317");
+        opts.Endpoint = new Uri("http://otel-collector:4317");
+        // opts.Endpoint = new Uri("http://localhost:55681");
     });
 });
 

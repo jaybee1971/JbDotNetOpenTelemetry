@@ -12,7 +12,7 @@ public class PingController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        var infoFromContext = Baggage.GetBaggage("ExampleItem");
+        var infoFromContext = Baggage.Current.GetBaggage("ExampleItem");
 
         using var activitySource = new ActivitySource("Ping.API.2");
 

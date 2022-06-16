@@ -1,0 +1,41 @@
+processors:
+  resource:
+    attributes:
+    - key: appdynamics.controller.account
+      action: upsert
+      value: "cwt-test"
+    - key: appdynamics.controller.host
+      action: upsert
+      value: "cwt-test.saas.appdynamics.com"
+    - key: appdynamics.controller.port
+      action: upsert
+      value: 443
+    - key: service.namespace
+      action: upsert
+      value: otel_poc
+  batch:
+    timeout: 30s
+    send_batch_size: 90
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: otel-collector:4317
+      http:
+        endpoint: otel-collector:4318
+exporters:
+  logging:
+    loglevel: debug
+  jaeger:
+    endpoint: jaeger-all-in-one:14250
+    insecure: true
+  otlphttp:
+    endpoint: "https://pdx-sls-agent-api.saas.appdynamics.com"
+    headers: {"x-api-key": "9a8467df03ef434d324ace0dc84e2d4831c498b300944c1eb9e7e5d363399741"}
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [resource, batch]
+      exporters: [logging, jaeger, otlphttp]
+      

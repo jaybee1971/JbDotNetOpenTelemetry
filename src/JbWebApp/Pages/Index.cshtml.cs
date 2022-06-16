@@ -13,7 +13,7 @@ public class IndexModel : PageModel
     {
         _logger = logger;
         _apiClient = apiClient;
-        _apiClient.BaseAddress = new Uri("Https://localhost:7233");
+        _apiClient.BaseAddress = new Uri("Http://localhost:9001");
     }
 
     public async Task OnGetAsync()

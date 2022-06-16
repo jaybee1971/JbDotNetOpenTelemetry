@@ -17,11 +17,12 @@ public class PingController : ControllerBase
         using var Api1Activity = activitySource.StartActivity("Call to Ping API 2");
         Api1Activity?.SetTag("api.Info", "some info here about the API call");
 
-        Baggage.SetBaggage("ExampleItem", "Baggage information to pass through span");
+        Baggage.Current.SetBaggage("ExampleItem", "Baggage information to pass through span");
 
         // 'Ping' API 2
         using var client = new HttpClient();
-        _ = await client.GetAsync("http://localhost:5192/ping");
+        // _ = await client.GetAsync("http://localhost:5192/ping");
+        _ = await client.GetAsync("http://ping-api-2:7001/ping");
 
         // Another span
         using var activityTwo = activitySource.StartActivity("Arbitrary 10ms delay");

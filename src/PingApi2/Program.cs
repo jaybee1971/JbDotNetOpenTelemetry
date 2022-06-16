@@ -24,9 +24,11 @@ builder.Services.AddOpenTelemetryTracing(b =>
         ResourceBuilder.CreateDefault()
             .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
     .AddAspNetCoreInstrumentation()
+    .AddHttpClientInstrumentation()
     .AddOtlpExporter(opts => 
     { 
-        opts.Endpoint = new Uri("http://localhost:4317");
+        opts.Endpoint = new Uri("http://otel-collector:4317");
+        // opts.Endpoint = new Uri("http://localhost:55681");
     });
 });
 

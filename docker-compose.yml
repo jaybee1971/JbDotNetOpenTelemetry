@@ -1,0 +1,63 @@
+version: "3.5"
+services:
+  # Collector
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    command: ["--config=/conf/otel-config.yml", "--log-level=DEBUG"]
+    volumes:
+      - ./otel-config.yml:/conf/otel-config.yml
+    networks:
+      - backend
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "9464:9464"
+      - "9411:9411"
+      - "55678:55678"
+      - "55680:55680"
+      - "55681:55681"
+    depends_on:
+      - jaeger-all-in-one
+  # Jaeger
+  jaeger-all-in-one:
+    image: jaegertracing/all-in-one:latest
+    networks:
+      - backend
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "13133:13133"
+      - "14250:14250"
+      - "14268:14268"
+      - "16685:16685"
+      - "16686:16686"
+    environment:
+      - JAEGER_AGENT_HOST=jaeger-all-in-one
+      - JAEGER_AGENT_PORT=6831
+  # Dotnet Services
+  weather-api:
+    networks:
+      - backend
+    image: weather-api
+    ports:
+      - "9001:9001"
+
+  ping-api-1:
+    networks:
+      - backend
+    image: ping-api-1
+    ports:
+      - "8001:8001"
+
+  ping-api-2:
+    networks:
+      - backend
+    image: ping-api-2
+    ports:
+      - "7001:7001"
+    
+
+networks:
+  backend:
