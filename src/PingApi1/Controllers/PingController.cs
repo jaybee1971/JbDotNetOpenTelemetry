@@ -17,7 +17,7 @@ public class PingController : ControllerBase
         using var Api1Activity = activitySource.StartActivity("Call to Ping API 2");
         Api1Activity?.SetTag("api.Info", "some info here about the API call");
 
-        Baggage.Current.SetBaggage("ExampleItem", "Baggage information to pass through span");
+        Baggage.SetBaggage("ExampleItem", "Baggage information to pass through span");
 
         // 'Ping' API 2
         using var client = new HttpClient();
