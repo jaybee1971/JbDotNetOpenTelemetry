@@ -3,7 +3,7 @@ WORKDIR /app
 
 EXPOSE 5192
 ENV ASPNETCORE_URLS=http://+:7001
-ENV OTEL_RESOURCE_ATTRIBUTES=service.name=Ping.API.2
+ENV OTEL_RESOURCE_ATTRIBUTES=service.name=otel_poc_app2
 ENV OTEL_RESOURCE_ATTRIBUTES=service.namespace=otel_poc
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build

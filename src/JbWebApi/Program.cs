@@ -1,7 +1,7 @@
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-var serviceName = "Weather.Api";
+var serviceName = "otel_poc_app3";
 var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);

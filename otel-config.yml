@@ -10,9 +10,9 @@ processors:
     - key: appdynamics.controller.port
       action: upsert
       value: 443
-    - key: service.namespace
+    - key: telemetry.sdk.name
       action: upsert
-      value: otel_poc
+      value: "opentelemetry"
   batch:
     timeout: 30s
     send_batch_size: 90
@@ -23,6 +23,9 @@ receivers:
         endpoint: otel-collector:4317
       http:
         endpoint: otel-collector:4318
+        cors_allowed_origins:
+          - http://*
+          - https://*
 exporters:
   logging:
     loglevel: debug

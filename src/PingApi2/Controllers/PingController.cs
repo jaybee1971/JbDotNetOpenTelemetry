@@ -14,10 +14,10 @@ public class PingController : ControllerBase
     {
         var infoFromContext = Baggage.GetBaggage("ExampleItem");
 
-        using var activitySource = new ActivitySource("Ping.API.2");
+        using var activitySource = new ActivitySource("otel_poc_app2");
 
         // A span
-        using var Api2Activity = activitySource.StartActivity("In Ping API 2 using GET method");
+        using var Api2Activity = activitySource.StartActivity("In Ping API 2 using GET method", ActivityKind.Server);
         Api2Activity?.SetTag("api.Info", "some info here about the API call");
         Api2Activity?.SetTag("api.Baggage", infoFromContext);
         return Ok();

@@ -3,7 +3,7 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using System.Diagnostics;
 
-var serviceName = "Jb Web App";
+var serviceName = "otel_poc_app4";
 var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
