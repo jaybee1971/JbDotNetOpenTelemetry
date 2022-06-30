@@ -3,7 +3,8 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using System.Diagnostics;
 
-var serviceName = "otel_poc_app4";
+var serviceName = "otel_poc_web1";
+var serviceNamespace = "otel_poc";
 var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,7 @@ builder.Services.AddOpenTelemetryTracing(b =>
     .AddSource(serviceName)
     .SetResourceBuilder(
         ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+            .AddService(serviceName: serviceName, serviceNamespace: serviceNamespace, serviceVersion: serviceVersion))
     .AddAspNetCoreInstrumentation()
     .AddHttpClientInstrumentation()
     .AddOtlpExporter(opts => 
